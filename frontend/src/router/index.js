@@ -15,7 +15,7 @@ const routes = [
     path: '/auth',
     component: Auth,
     name: 'auth',
-    meta: { 'Title': 'Auth', public: true }
+    meta: { title: 'Auth', public: true }
   },
   {
     path: '/',
@@ -29,24 +29,25 @@ const routes = [
         path: '/cursos',
         name: 'lista',
         component: ListaCursos,
-        meta: { Title: 'Cursos' }
+        meta: { title: 'Cursos' }
       },
       {
         path: '/cursos-register',
         name: 'register',
         component: RegistrarCursos,
-        meta: { Title: 'Registrar Cursos' }
+        meta: { title: 'Registrar Cursos' }
       }
     ]
   }
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || ''
+  document.title = to.meta.title 
   checkSession(next, to)
 })
 

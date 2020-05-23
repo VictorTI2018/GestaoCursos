@@ -10,9 +10,9 @@
       </div>
     </div>
     <div class="topnav">
-      <a class="active" href="#home">Home</a>
-      <a href="#contact">Cursos</a>
-      <a href="#about">Perfil</a>
+      <router-link class="active"  :to="item.to" v-for="(item, index) in menu" :key="index">
+        {{ item.text }}
+      </router-link>
     </div>
     <div class="aside_footer">
       <p class="aside_title">Versão {{ version }}</p>
@@ -38,15 +38,21 @@ export default {
     }
   },
   methods: {
-    menuRoute() {
-      return [];
+    menuRoute(name) {
+      const route = this.$router.resolve({ name }).route;
+      console.log(route)
+      return { text: document.title, to: route.path };
     }
   },
 
   computed: {
-    menu(name) {
-      const route = this.$router.resolve({ name }).route;
-      return { text: route.meta.title, to: route.path };
+    menu() {
+      return [
+        {
+          icon: "",
+          ...this.menuRoute("cursos")
+        }
+      ];
     }
   }
 };

@@ -3,7 +3,7 @@
     <span>
       <div class="row">
         <div class="col-md-2 mb-2">
-          <button class="btn btn-success btn-block">Novo Curso</button>
+          <router-link to="/cursos-register" class="btn btn-success btn-block">Novo Curso</router-link>
         </div>
       </div>
       <div class="row mt-4">
